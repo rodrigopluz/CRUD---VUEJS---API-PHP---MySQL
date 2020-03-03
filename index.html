@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CRUD - VUEJS - API PHP - MySQL</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div class="">
+                <div class="crud_header">
+                    <h1 class="left">Lista de tarefas do dia</h1>
+                    <button class="right addnew" @click="showingModal = true;">Adicionar nova Tarefa</button>
+                    <div class="fix"></div>
+                </div>		
+                <hr>
+                <p class="errorMessage" v-if="errorMessage">{{ errorMessage }}</p>
+                <p class="successMessage" v-if="successMessage">{{ successMessage }}</p>
+                <table class="list">
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Tarefa</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                    <tr v-for="task in tasks">
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.user }}</td>
+                        <td>{{ task.task }}</td>
+                        <td>{{ task.date }}</td>
+                        <td>
+                            <button @click="showingeditModal = true; selectTask(task)">Editar</button>
+                            <button @click="showingdeleteModal = true; selectTask(task)">Deletar</button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="fix"></div>
+                <!-- modal add -->
+                <div class="modal col-md-6" id="addmodal" v-if="showingModal">
+                    <div class="modalheading">
+                        <p class="left">Nova Tarefa</p>
+                        <p class="right close" @click="showingModal = false;">x</p>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="modalbody">
+                        <div class="modalcontent">
+                            <table class="form">
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>:</th>
+                                    <td><input type="text" placeholder="usuario" v-model="newTasks.user"></td>
+                                </tr>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>:</th>
+                                    <td><input type="text" placeholder="data" v-model="newTasks.date"></td>
+                                </tr>
+                                <tr>
+                                    <th>Tarefa</th>
+                                    <th>:</th>
+                                    <td><textarea cols="80" rows="3" placeholder="tarefa" v-model="newTasks.task"></textarea></td>
+                                </tr>
+                            </table>
+                            <button class="center"  @click="showingModal = false; saveTasks();">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal edit -->
+                <div class="modal col-md-6" id="editmodal" v-if="showingeditModal">
+                    <div class="modalheading">
+                        <p class="left">Editar Tarefa</p>
+                        <p class="right close" @click="showingeditModal = false;">x</p>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="modalbody">
+                        <div class="modalcontent">
+                            <table class="form">
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>:</th>
+                                    <td><input type="text" placeholder="usuario" v-model="clickedTask.user"></td>
+                                </tr>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>:</th>
+                                    <td><input type="text" placeholder="data"  v-model="clickedTask.date"></td>
+                                </tr>
+                                <tr>
+                                    <th>Tarefa</th>
+                                    <th>:</th>
+                                    <td><textarea cols="80" rows="3" placeholder="tarefa" v-model="clickedTask.task"></textarea></td>
+                                </tr>
+                            </table>
+                            <button class="center" @click="showingeditModal = false; updateTasks()">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal delete -->
+                <div class="modal col-md-6" id="deletemodal" v-if="showingdeleteModal">
+                    <div class="modalheading">
+                        <p class="left">Deletar Tarefa</p>
+                        <p class="right close" @click="showingdeleteModal = false;">x</p>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="modalbody">
+                        <div class="modalcontent">
+                            <div class="margin"></div>
+                            <h3 class="center">Você deseja realmente deletar essa tarefa?</h3>
+                            <div class="margin"></div>
+                            <h4 class="center">{{ clickedTask.user }}</h4>
+                            <div class="margin"></div>
+                            <div class="col-md-6 center">
+                                <button class="left" @click="showingdeleteModal = false; deleteTasks()">SIM</button>
+                                <button class="right" @click="showingdeleteModal = false;">NÃO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
