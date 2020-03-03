@@ -1,17 +1,16 @@
 var app = new Vue({
     el: "#root",
     data: {
+		tasks: [],
+		clickedTask: {},
+		errorMessage : "",
         showingModal:false,
+		successMessage : "",
 		showingeditModal: false,
 		showingdeleteModal: false,
-		errorMessage : "",
-		successMessage : "",
-		tasks: [],
-		newTasks: {user: "", task: "", date: ""},
-		clickedTask: {},
+		newTasks: { user: "", task: "", date: "" },
     },
     mounted: function () {
-        // console.log("Hi KK");
         this.getAllTasks();
     },
     methods: {

@@ -3,16 +3,15 @@
 	padding: 0;
 }
 
-
 body {
     margin: 0;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 1rem;
+    color: #212529;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
     text-align: left;
     background-color: #e0e0e0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 .left {
@@ -26,34 +25,32 @@ body {
 }
 
 .fix {
-	overflow: hidden;
 	clear: both;
+	overflow: hidden;
 }
 
 h1 {
 	font-size: 25px;
-
 }
 
 button {
-	padding: 0 15px;
 	border: 0;
-	background: #02a2ff;
-	color: #fff;
-	border-radius: 3px;
-	cursor: pointer;
 	outline: 0;
+	color: #fff;
+	cursor: pointer;
+	padding: 0 15px;
+	border-radius: 3px;
+	background: #02a2ff;
 }
 
 div#root {
+    padding: 50px;
     margin-top: 50px;
     background: #f3f3f3;
-    padding: 50px;
 }
 
 table.list {
-	width:100%;
-
+	width: 100%;
 }
 
 table.list tr {
@@ -62,8 +59,8 @@ table.list tr {
 }
 
 table.list th {
-    background: #02a2ff;
     padding: 2px;
+    background: #02a2ff;
     text-align: center;
 }
 
@@ -74,33 +71,33 @@ table.list th {
 
 table.list tr td {
 	padding: 10px;
-	margin: 2px!important;
-	background: #ddd;
-	overflow: hidden;
-	text-align: center;
 	margin-top: 5px;
+	overflow: hidden;
+	background: #ddd;
+	text-align: center;
+	margin: 2px!important;
 	border-right: 1px solid #fff;
 }
 
 .modal {
+	left: 0;
+	right: 0;
+	bottom: 0;
 	top: 99px;
-	left:0;
-	right:0;
-	bottom:0;
-	position: fixed;
-	background: #b5b5b5fc;
-	margin: 0 auto;
-	display: block;
 	padding: 0;
 	height: 300px;
+	margin: 0 auto;
+	display: block;
+	position: fixed;
+	background: #b5b5b5fc;
 	box-shadow: 0 0 130px 28px #00000073;
 }
 
 .modalheading {
-	background: #fff;
 	padding: 5px;
 	font-size: 17px;
 	line-height: 32px;
+	background: #fff;
 }
 
 .modalcontent {
@@ -117,8 +114,8 @@ table.form {
 }
 
 .form td {
-    text-align: left;
     margin: 0 10px;
+    text-align: left;
     border: 5px solid #b6b6b6;
 }
 
@@ -132,24 +129,24 @@ table.form {
 }
 
 .center {
+	margin: 0 auto;
+	display: block;
     text-align: center;
-    display: block;
-    margin: 0 auto;
 }
 
 p.errorMessage {
-    background: #ffbaba;
     padding: 10px;
+    background: #ffbaba;
     border-left: 5px solid #f00;
 }
 
 p.successMessage {
-    background: #a2ffa2;
     padding: 10px;
+    background: #a2ffa2;
     border-left: 5px solid #008c1e;
 }
 
 .form td input {
-    padding:5px 10px;
     outline: 0;
+    padding: 5px 10px;
 }

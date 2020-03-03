@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'root', 'symee@2018', 'api_vuejs');
+$conn = new mysqli('localhost', 'root', '', 'api_vuejs');
 
 if ($conn->connect_error) {
     die('Erro, Falha na conexão com o banco de dados.');
@@ -31,13 +31,13 @@ if ($action == 'create') {
     $task = $_POST['task'];
     $date = $_POST['date'];
 
-    $result = $conn->query("INSERT INTO tasks (user, task, date) VALUES('$user', '$task', '$date')");
+    $result = $conn->query("INSERT INTO tasks (user, task, date) VALUES ('$user', '$task', '$date')");
 
     if ($result) {
-        $res['message'] = 'Tarefa adicionada com sucesso';
+        $res['message'] = 'Tarefa criada com sucesso';
     } else {
         $res['error'] = true;
-        $res['message'] = 'insert task fail';
+        $res['message'] = 'Erro ao tentar criar a tarefa, tente novamente mais tarde';
     }
 }
 
@@ -54,7 +54,7 @@ if ($action == 'update') {
         $res['message'] = 'Tarefa atualizada com sucesso';
     } else {
         $res['error'] = true;
-        $res['message'] = 'update task fail';
+        $res['message'] = 'Erro ao tentar atualizar a tarefa, tente novamente mais tarde';
     }
 }
 
@@ -68,10 +68,10 @@ if ($action == 'delete') {
     $result = $conn->query("DELETE FROM tasks WHERE id = '$id'");
 
     if ($result) {
-        $res['message'] = 'Tarefa deletada com sucesso';
+        $res['message'] = 'Tarefa excluida com sucesso';
     } else {
         $res['error'] = true;
-        $res['message'] = 'delete task fail';
+        $res['message'] = 'Erro ao tentar excluir a tarefa, tente novamente mais tarde';
     }
 }
 
